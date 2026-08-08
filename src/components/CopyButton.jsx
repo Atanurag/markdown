@@ -11,21 +11,15 @@ function CopyButton({ markdown, previewRef }) {
 
         try {
 
-            await copyRichContent(
-    markdown,
-    previewRef
-);
+            await copyRichContent(markdown,previewRef);
             setCopied(true);
-
             setTimeout(() => {
-
                 setCopied(false);
-
             }, 2000);
 
         }catch (error) {
-  console.error(error);
-  alert("Unable to copy content. Please try again.");
+             console.error(error);
+             alert("Unable to copy content. Please try again.");
 }
 
     };
@@ -35,9 +29,8 @@ function CopyButton({ markdown, previewRef }) {
         <button
 
             onClick={handleCopy}
-
-disabled={
-    !markdown}            aria-label="Copy rendered markdown"
+            disabled={!markdown}  
+            aria-label="Copy rendered markdown"
             className="
                 rounded-xl
                 bg-blue-600
@@ -53,7 +46,6 @@ disabled={
                 focus:ring-4
                 focus:ring-blue-300
             "
-
         >
 
             {copied

@@ -5,7 +5,6 @@ function UploadArea({ appState, setAppState }) {
   const onDrop = useCallback(
   (acceptedFiles, fileRejections) => {
 
-    // Handle files rejected by react-dropzone
     if (fileRejections.length > 0) {
       setAppState(prev => ({
         ...prev,
@@ -21,7 +20,6 @@ function UploadArea({ appState, setAppState }) {
 
     if (!file) return;
 
-    // Validate extension
     const fileName = file.name.toLowerCase();
 
     if (
@@ -64,7 +62,6 @@ function UploadArea({ appState, setAppState }) {
       return;
     }
 
-    // Start loading
     setAppState(prev => ({
       ...prev,
       loading: true,

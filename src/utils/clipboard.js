@@ -2,13 +2,10 @@ import { marked } from "marked";
 
 export async function copyRichContent(markdown,previewRef) {
 const html = previewRef?.current?.innerHTML || "";
-  // Fallback for browsers without ClipboardItem support
   if (!navigator.clipboard || !window.ClipboardItem) {
     await navigator.clipboard.writeText(markdown);
     return;
   }
-
-  // First try with text/markdown
   try {
     await navigator.clipboard.write([
       new ClipboardItem({
@@ -31,7 +28,6 @@ const html = previewRef?.current?.innerHTML || "";
     );
   }
 
-  // Fallback without text/markdown
   await navigator.clipboard.write([
     new ClipboardItem({
       "text/html": new Blob([html], {
