@@ -1,1 +1,10 @@
 @import "tailwindcss";
+.markdown-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.markdown-table-wrapper table {
+  min-width: 100%;
+}

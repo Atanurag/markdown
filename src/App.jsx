@@ -1,23 +1,21 @@
-import { useState,useRef } from "react";
+import { useRef, useState } from "react";
 import Header from "./components/Header";
 import UploadArea from "./components/UploadArea";
 import MarkdownPreview from "./components/MarkdownPreview";
 import CopyButton from "./components/CopyButton";
 
 function App() {
-
   const [appState, setAppState] = useState({
     markdown: "",
     fileName: "",
     loading: false,
-    error: ""
+    error: "",
   });
 
   const previewRef = useRef(null);
 
   return (
-    <main className="min-h-screen bg-slate-100 py-10 px-4">
-
+    <main className="min-h-screen bg-slate-100 px-4 py-8 sm:py-10">
       <div className="mx-auto max-w-6xl">
 
         <Header />
@@ -32,7 +30,6 @@ function App() {
           <MarkdownPreview
             markdown={appState.markdown}
             previewRef={previewRef}
-
           />
 
         </div>
@@ -41,12 +38,10 @@ function App() {
           <CopyButton
             markdown={appState.markdown}
             previewRef={previewRef}
-
           />
         </div>
 
       </div>
-
     </main>
   );
 }

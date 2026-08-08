@@ -1,45 +1,52 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import EmptyState from "./EmptyState";
 import MarkdownRenderer from "./MarkdownRenderer";
+import EmptyState from "./EmptyState";
 import ErrorBoundary from "./ErrorBoundary";
+
 function MarkdownPreview({ markdown, previewRef }) {
+  return (
+    <section
+      className="
+        flex
+        h-[500px]
+        min-h-0
+        flex-col
+        overflow-hidden
+        rounded-2xl
+        bg-white
+        shadow-lg
+        sm:h-[600px]
+      "
+    >
 
-    return (
+      {/* Preview Header */}
+      <div className="shrink-0 border-b px-6 py-4">
+        <h2 className="text-xl font-semibold text-slate-900">
+          Preview
+        </h2>
+      </div>
 
-        <section className="rounded-2xl bg-white shadow-lg overflow-hidden">
+      {/* ONLY THIS AREA SCROLLS */}
+      <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
 
-            <div className="border-b px-6 py-4">
+        {!markdown ? (
+          <div className="p-8">
+            <EmptyState />
+          </div>
+        ) : (
+          <ErrorBoundary>
+            <article
+              ref={previewRef}
+              className="markdown-body !m-0 !max-w-none !p-8"
+            >
+              <MarkdownRenderer markdown={markdown} />
+            </article>
+          </ErrorBoundary>
+        )}
 
-                <h2 className="text-xl font-semibold">
-                    Preview
-                </h2>
+      </div>
 
-            </div>
-
-            <div className="p-8 min-h-[600px] overflow-auto">
-
-                {!markdown ? (
-
-                    <EmptyState />
-
-                ) : (
-
-                    <article  ref={previewRef} className="markdown-body" >
-
-<ErrorBoundary>
-    <MarkdownRenderer markdown={markdown} />
-</ErrorBoundary>
-</article>
-
-                )}
-
-            </div>
-
-        </section>
-
-    );
-
+    </section>
+  );
 }
 
 export default MarkdownPreview;
