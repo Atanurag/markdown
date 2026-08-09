@@ -81,6 +81,12 @@ src/
 └── main.jsx
 ```
 
+
+# Some Images
+
+![Demo GIF](https://github.com/Atanurag/markdown/blob/main/i1.png "Project demo")
+![Demo GIF](https://github.com/Atanurag/markdown/blob/main/i2.png "Project demo")
+
 ---
 
 # Setup Instructions for local testing
